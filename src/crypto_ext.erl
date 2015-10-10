@@ -26,11 +26,11 @@ not_loaded(Line) ->
 
 -spec block_decrypt(atom(), crypto:block_key(), binary()) -> iodata().
 block_decrypt(_Type, _Key, _CipherText) ->
-    "Not loaded".
+    not_loaded(?LINE).
 
 -spec block_encrypt(atom(), crypto:block_key(), iodata()) -> binary().
 block_encrypt(_Type, _Key, _PlainText) ->
-    "Not loaded".
+    not_loaded(?LINE).
 
 encode_decode_test() ->
 	PlainText = <<"Encryption test">>,
