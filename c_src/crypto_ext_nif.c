@@ -71,7 +71,7 @@ static ERL_NIF_TERM block_decrypt(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
     return enif_make_badarg(env);
   }else if(strcmp(type_str,"aes_ecb128")){
     return enif_make_badarg(env);
-  }  
+  }
 
   //ARG2 : Key (binary(), must be 16 bits)
   if(!enif_inspect_binary(env, argv[1], &key)) {
@@ -92,7 +92,7 @@ static ERL_NIF_TERM block_decrypt(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
   //Set up decrypt_key
   struct aes_key_st* decrypt_key = (struct aes_key_st*)malloc(sizeof(AES_KEY));
   memset(decrypt_key, 0, sizeof(AES_KEY));
-  
+
   AES_set_decrypt_key((unsigned char*)(key.data), 128, decrypt_key);
 
   int i = 0;
