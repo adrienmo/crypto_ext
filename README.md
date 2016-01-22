@@ -1,5 +1,7 @@
-crypto_ext
-=====
+#crypto_ext
+
+[![Hex.pm](https://img.shields.io/hexpm/v/eredis_cluster.svg?style=flat-square)](https://hex.pm/packages/crypto_ext)
+
 Provide an extension of crypto module to support AES 128 ECB cipher. This erlang module contains NIFs (Native Implemented Function). The encryption algorithm relies on the C openssl libraries, extracted in the folder `libopenssl/`.
 
 ## Compilation
