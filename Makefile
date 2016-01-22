@@ -13,11 +13,6 @@ xref:
 clean:
 	@ $(REBAR) clean
 
-eunit:
-	@rm -rf .eunit
-	@mkdir -p .eunit
-	@ERL_FLAGS="-config test.config" $(REBAR) eunit 
-
 test: eunit
 
 edoc:

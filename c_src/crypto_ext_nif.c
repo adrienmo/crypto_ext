@@ -7,7 +7,7 @@
 
 static ERL_NIF_TERM block_encrypt(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-  ErlNifBinary plain_text, out, key, type;
+  ErlNifBinary plain_text, out, key;
   unsigned char* padded_plain_text;
   char type_str[16] = "";
 
@@ -33,7 +33,7 @@ static ERL_NIF_TERM block_encrypt(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
   //Pad input with PKCS5Padding
   unsigned char padding =(unsigned char) (16 - plain_text.size % 16);
   padded_plain_text = (unsigned char*)malloc(sizeof(unsigned char) * plain_text.size + padding);
-  strncpy(padded_plain_text, (unsigned char*)(plain_text.data), plain_text.size);
+  memcpy(padded_plain_text, (unsigned char*)(plain_text.data), plain_text.size);
   int j = 0;
   for(j = 0; j < padding; j++) {
     padded_plain_text[plain_text.size + j] = padding;
@@ -63,7 +63,7 @@ static ERL_NIF_TERM block_encrypt(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
 
 static ERL_NIF_TERM block_decrypt(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-  ErlNifBinary cipher_text, out, key, type;
+  ErlNifBinary cipher_text, out, key;
   char type_str[16] = "";
 
   //ARG1 : Type (atom(), only aes_ecb128 is supported)
@@ -109,7 +109,7 @@ static ERL_NIF_TERM block_decrypt(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
     return enif_make_badarg(env);
   }
 
-  strncpy((unsigned char*)out.data, decoded, cipher_text.size);
+  memcpy((unsigned char*)out.data, decoded, cipher_text.size);
 
   free(decoded);
   free(decrypt_key);
