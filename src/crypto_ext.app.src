@@ -1,6 +1,6 @@
 {application, 'crypto_ext',
  [{description, "An OTP library"},
-  {vsn, "0.1.1"},
+  {vsn, "0.1.4"},
   {registered, []},
   {applications,
    [kernel,
