@@ -11,3 +11,4 @@ rel/example_project
 .rebar
 _build/
 rebar.lock
+doc/

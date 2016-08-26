@@ -9,7 +9,7 @@ defmodule CryptoExt.Mixfile do
      description: "Crypto lib extension to support AES 128 ECB cipher",
      compilers: [:crypto_ext_nifs] ++ Mix.compilers,
      package: package,
-     deps: []]
+     deps: [{:ex_doc, ">= 0.0.0", only: :dev}]]
   end
 
   defp package do
